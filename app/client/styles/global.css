@@ -1,0 +1,27 @@
+body {
+  font-family: Helvetica, Arial, sans-serif;
+  color:222;}
+
+h1,h2,h3,h4,h5,p,cite,div {
+  margin:0; border:0; padding:0;}
+
+h1 {
+  padding:3px 0;
+  margin:10px 0;}
+
+input, textarea {
+  border: 1px solid #ddd;
+  border-radius:2px;
+  padding:5px;
+  margin:3px 0;
+  color:#222;
+  display:block;
+  min-width:300px;
+  max-width:700px;}
+
+textarea {
+  resize:vertical;}
+
+#application-container {
+  max-width:800px;
+  margin:0 auto;}
