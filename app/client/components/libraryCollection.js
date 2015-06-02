@@ -12,8 +12,11 @@ var LibraryCollection = React.createClass({
     return this.props.collectionName || '[no collection name]';
   },
 
-  render: function () {
+  getInitialState: function () {
 
+  },
+
+  render: function () {
     var childArtifacts = this.props.data.map(function (artifact) {
       return (
           <Artifact data={artifact} key={artifact.id} />
@@ -26,7 +29,6 @@ var LibraryCollection = React.createClass({
         {childArtifacts}
       </div>
     );
-
   }
 
 });
