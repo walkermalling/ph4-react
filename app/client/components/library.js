@@ -1,16 +1,53 @@
 var React             = require('react');
 var LibraryCollection = require('./libraryCollection');
-var stores = require('./components/stores');
-var McFly = require('mcfly');
+var stores            = require('./stores');
+var McFly             = require('mcfly');
 
 var Flux = new McFly();
 var _libstore = stores.library;
 
 var seedCollections = [
-  {name: 'Fiction'},
-  {name: 'Philosophy'},
-  {name: 'Poetry'}
+  { 
+    name: 'Fiction',
+    artifacts: [
+      {
+        title: 'Lord of the Rings',
+        author: 'JRR Tolkien'
+      },
+      {
+        title: 'Cryptonomicon',
+        author: 'Neal Stephenson'
+      }
+    ]
+  },
+  { 
+    name: 'Philosophy',
+    artifacts: [
+      {
+        title: 'Being and Time',
+        author: 'Martin Heidegger'
+      },
+      {
+        title: 'Experience',
+        author: 'Ralph Waldo Emerson'
+      }
+    ]
+  },
+  { 
+    name: 'Poetry',
+    artifacts: [
+      {
+        title: 'Essay on Criticism',
+        author: 'Alexander Pope'
+      },
+      {
+        title: 'Dreamsongs',
+        author: 'John Berryman'
+      }
+    ]
+  },
 ];
+
 _libstore.collections = [];
 seedCollections.forEach(function (collection) {
   _libstore.collections.push(collection);
@@ -31,21 +68,19 @@ var LibraryStore = Flux.createStore({
         break;
     }
   }
-});
+);
 
 var LibraryActions = Flux.createActions({
   addCollection: function (data){
      return {
         actionType: "ADD_COLLECTION",
         collection: data
-     }
+     };
   }
 });
 
 function getCollections(){
-   return {
-       collections: LibraryStore.getCollections()
-   }
+   return LibraryStore.getCollections();
 }
 
 var LibraryController = React.createClass({
@@ -56,7 +91,19 @@ var LibraryController = React.createClass({
         this.setState(getCollections());
     },
     render: function() {
-        return <LibraryCollection collections={this.state.collections} />;
+      console.log(this.state.collections);
+      var childCollections = this.state.collections.map(function (collection) {
+        return (
+          <LibraryCollection 
+            artifacts={collection.artifacts} 
+            collectionName={collection.name} />
+        );
+      });
+      return (
+        <div>
+          {childCollections}
+        </div>
+      )
     }
 });
 

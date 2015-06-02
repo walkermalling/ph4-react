@@ -1,11 +1,6 @@
 var React     = require('react');
 var Artifact  = require('./artifact');
 
-var collectionTitleStyle = {
-  color: '000',
-  margin: '5px 0'
-};
-
 var LibraryCollection = React.createClass({
 
   getName: function () {
@@ -13,19 +8,19 @@ var LibraryCollection = React.createClass({
   },
 
   getInitialState: function () {
-
+    return null;
   },
 
   render: function () {
-    var childArtifacts = this.props.data.map(function (artifact) {
+    var childArtifacts = this.props.artifacts.map(function (artifact) {
       return (
-          <Artifact data={artifact} key={artifact.id} />
+        <Artifact data={artifact} />
       );
     });
 
     return (
       <div>
-        <h2 style={collectionTitleStyle}>{this.getName()}</h2>
+        <h2>{this.getName()}</h2>
         {childArtifacts}
       </div>
     );

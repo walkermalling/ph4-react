@@ -1,8 +1,7 @@
 var React = require('react');
 var Library = require('./components/library');
 
-
 React.render(
-  <LibraryController />, 
+  <Library />, 
   document.getElementById('application-container')
 );
