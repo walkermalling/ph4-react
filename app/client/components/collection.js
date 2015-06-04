@@ -1,5 +1,7 @@
-var React     = require('react');
-var Artifact  = require('./artifact');
+var React           = require('react');
+var Artifact        = require('./artifact');
+var CollectionForm  = require('./collectionForm');
+var LibraryActions  = require('../actions/actions');
 
 var LibraryCollection = React.createClass({
 
@@ -22,6 +24,7 @@ var LibraryCollection = React.createClass({
       <div>
         <h2>{this.getName()}</h2>
         {childArtifacts}
+        <CollectionForm collectionFormCallback={} />
       </div>
     );
   }

@@ -37,6 +37,7 @@ var Artifact = React.createClass({
   render: function () {
     var editButton = (this.state.active || this.state.edit) ? this.showEditButton() : null;
     var editForm = this.state.edit ? this.showEditForm() : null;
+    
     return (
       <div onMouseEnter={this.handleHover} onMouseLeave={this.handleHoverEnd}> 
         <h3>{this.props.data.title}</h3>
